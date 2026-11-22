@@ -1,0 +1,5 @@
+{
+  "transport": {"car": 0.21, "bike": 0.08, "bus": 0.05, "metro": 0.03},
+  "electricity": 0.82,
+  "food": {"vegetarian": 1.5, "chicken": 5.0, "fish": 4.0, "mutton": 12.0}
+}

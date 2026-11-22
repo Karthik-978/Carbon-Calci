@@ -1,0 +1,78 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#f5f7f2"><meta name="description" content="Estimate your everyday carbon footprint and discover practical ways to reduce it.">
+  <title>CarbonLens AI â€” Make your impact visible</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a class="brand" href="#overview"><span class="brand-mark">â—’</span><span>carbon<span class="brand-light">lens</span><small>IMPACT, IN FOCUS</small></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <nav class="nav">
+        <a class="nav-link active" href="#overview"><span>â–¦</span> Overview</a>
+        <a class="nav-link" href="#calculator"><span>â—‰</span> Footprint calculator</a>
+        <a class="nav-link" href="#insights"><span>âœ³</span> AI insights</a>
+        <a class="nav-link" href="#mobility"><span>âŒ</span> Eco mobility</a>
+        <a class="nav-link" href="#history"><span>â—·</span> History</a>
+      </nav>
+      <div class="sidebar-bottom"><div class="leaf-orbit">âœ³</div><strong>Small shifts.<br>Real-world impact.</strong><p>Understand your habits and make better everyday choices.</p><span class="version">CARBONLENS Â· MVP 1.0</span></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><div><span class="eyebrow">YOUR PERSONAL SUSTAINABILITY SPACE</span><h1 id="greeting">Make your impact visible.</h1></div><div class="top-actions"><span class="live-dot">LOCAL WORKSPACE</span><button class="icon-button" id="refreshBtn" title="Refresh data" aria-label="Refresh data">â†»</button><div class="avatar">CL</div></div></header>
+
+      <section class="hero" id="overview">
+        <div class="hero-copy"><span class="hero-kicker">A CLEARER VIEW OF YOUR FOOTPRINT</span><h2>Better choices<br><em>start with awareness.</em></h2><p>Estimate the carbon impact of your commute, electricity use and food habits â€” then turn the numbers into practical next steps.</p><a class="hero-cta" href="#calculator">Calculate my footprint <span>â†—</span></a></div>
+        <div class="hero-art" aria-hidden="true"><div class="sun"></div><div class="hill hill-back"></div><div class="hill hill-front"></div><div class="plant plant-one">â™£</div><div class="plant plant-two">â™£</div><div class="art-label">ONE PLANET. DAILY DECISIONS.</div></div>
+      </section>
+
+      <section class="section-head"><div><span class="eyebrow">AT A GLANCE</span><h2>Your footprint snapshot</h2></div><span class="muted" id="snapshotDate"></span></section>
+      <section class="metric-grid" aria-live="polite">
+        <article class="metric-card metric-total"><div class="metric-top"><span>Latest estimated footprint</span><span class="metric-icon">â—Ž</span></div><div class="metric-value"><strong id="totalMetric">â€”</strong><small>kg COâ‚‚e</small></div><div class="metric-foot" id="latestLabel">Calculate to see your latest result</div><div class="metric-line"><span id="totalBar"></span></div></article>
+        <article class="metric-card"><div class="metric-top"><span>Transport</span><span class="metric-icon mint">â†—</span></div><div class="metric-value"><strong id="transportMetric">â€”</strong><small>kg COâ‚‚e</small></div><div class="metric-foot">Monthly distance Ã— vehicle factor</div></article>
+        <article class="metric-card"><div class="metric-top"><span>Electricity</span><span class="metric-icon yellow">ÏŸ</span></div><div class="metric-value"><strong id="electricityMetric">â€”</strong><small>kg COâ‚‚e</small></div><div class="metric-foot">Based on monthly units entered</div></article>
+        <article class="metric-card"><div class="metric-top"><span>Food</span><span class="metric-icon coral">âœ³</span></div><div class="metric-value"><strong id="foodMetric">â€”</strong><small>kg COâ‚‚e</small></div><div class="metric-foot">Illustrative category estimate</div></article>
+      </section>
+
+      <section class="content-grid" id="calculator">
+        <article class="panel calculator-panel"><div class="panel-heading"><div><span class="eyebrow">01 / MEASURE</span><h2>Footprint calculator</h2><p>Enter values for the same month so the combined estimate has a consistent time period.</p></div><span class="step-badge">INPUT</span></div>
+          <form id="calculatorForm">
+            <div class="form-section-title"><span class="section-symbol">â†—</span><div><strong>Getting around</strong><small>Total distance for the same month you are estimating</small></div></div>
+            <div class="field-row"><label>Vehicle type<select id="vehicle"><option value="car">Car</option><option value="bike">Motorbike</option><option value="bus">Bus</option><option value="metro">Metro</option></select></label><label>Distance <span class="unit">km / month</span><input id="distance" type="number" min="0" max="100000" step="0.1" placeholder="e.g. 12" value=""></label></div>
+            <div class="form-section-title"><span class="section-symbol yellow">ÏŸ</span><div><strong>Power at home</strong><small>Monthly electricity consumption</small></div></div>
+            <label>Electricity consumed <span class="unit">units / month</span><input id="units" type="number" min="0" max="100000" step="1" placeholder="e.g. 180"></label>
+            <div class="upload-row"><div><strong>Have an electricity bill?</strong><small>Upload a clear bill image to extract the units with OCR.</small></div><label class="upload-button" for="billFile">â†‘ Upload bill<input id="billFile" type="file" accept="image/png,image/jpeg,image/webp"></label></div><div id="ocrStatus" class="inline-status" role="status"></div>
+            <div class="form-section-title"><span class="section-symbol coral">âœ³</span><div><strong>What you eat</strong><small>Choose the main food category for this estimate</small></div></div>
+            <label>Food category<select id="foodType"><option value="vegetarian">Plant-based / vegetarian meal</option><option value="chicken">Chicken-based meal</option><option value="fish">Fish-based meal</option><option value="mutton">Mutton / lamb-based meal</option></select></label>
+            <label>Number of meals in this month<input id="meals" type="number" min="0" max="10000" step="1" required placeholder="e.g. 30"></label>
+            <div class="upload-row food-upload"><div><strong>Try food image analysis</strong><small>AI vision can suggest a category when Gemini is configured. Always verify it.</small></div><label class="upload-button" for="foodFile">ï¼‹ Add photo<input id="foodFile" type="file" accept="image/png,image/jpeg,image/webp"></label></div><div id="foodStatus" class="inline-status" role="status"></div>
+            <button class="primary-button full-button" type="submit" id="calculateBtn">Calculate my footprint <span>â†’</span></button>
+          </form>
+          <p class="fine-print">Estimates use simplified emission factors and are not a certified personal carbon audit. Food factors are treated as per-meal illustrative values; enter the number of meals. The original dataset does not document portion sizes.</p>
+        </article>
+
+        <div class="right-stack">
+          <article class="panel result-panel"><div class="panel-heading"><div><span class="eyebrow">02 / UNDERSTAND</span><h2>Impact breakdown</h2></div><span class="status-pill" id="resultState">AWAITING DATA</span></div><div class="donut-wrap"><div class="donut" id="donut"><div><strong id="donutTotal">â€”</strong><small>kg COâ‚‚e</small></div></div><div class="legend"><div><i class="legend-dot transport-dot"></i><span>Transport</span><b id="legendTransport">â€”</b></div><div><i class="legend-dot electricity-dot"></i><span>Electricity</span><b id="legendElectricity">â€”</b></div><div><i class="legend-dot food-dot"></i><span>Food</span><b id="legendFood">â€”</b></div></div></div><div id="resultNote" class="result-note">Your category breakdown will appear here after your first calculation.</div></article>
+          <article class="panel insight-panel" id="insights"><div class="panel-heading"><div><span class="eyebrow">03 / TAKE ACTION</span><h2>Smart recommendations</h2></div><span class="sparkle">âœ³</span></div><p>Get practical suggestions based on the largest part of your estimated footprint.</p><button class="outline-button full-button" id="recommendBtn" disabled>Generate my action plan <span>â†—</span></button><div id="recommendations" class="recommendations" aria-live="polite">Complete a footprint calculation to unlock your action plan.</div><div class="simulator"><div><strong>What if I cut electricity by 20%?</strong><small>A quick scenario based on your latest estimate.</small></div><button id="simulateBtn" disabled>Simulate â†—</button></div><div id="simulationResult" class="simulation-result"></div></article>
+        </div>
+      </section>
+
+      <section class="section-head mobility-heading" id="mobility"><div><span class="eyebrow">04 / MOVE SMARTER</span><h2>Eco mobility studio</h2></div><span class="muted">Route estimates Â· Daily routine</span></section>
+      <section class="mobility-grid">
+        <article class="panel"><div class="panel-heading"><div><span class="eyebrow">ROUTE COMPARISON</span><h3>Find a lower-impact commute</h3><p>Compare estimated emissions for different travel modes.</p></div><span class="panel-icon">âŒ</span></div><form id="routeForm"><div class="field-row"><label>From<input id="origin" placeholder="e.g. TKR College, Hyderabad" required maxlength="180"></label><label>To<input id="destination" placeholder="e.g. Nampally, Hyderabad" required maxlength="180"></label></div><button class="primary-button" type="submit" id="routeBtn">Compare route <span>â†’</span></button></form><div id="routeResult" class="route-result" aria-live="polite">Enter two locations to calculate a road route and compare indicative mode factors.</div></article>
+        <article class="panel"><div class="panel-heading"><div><span class="eyebrow">YOUR ROUTINE</span><h3>Save your usual journey</h3><p>Keep a baseline for your regular commute.</p></div><span class="panel-icon">â—·</span></div><form id="routineForm"><label>Starting point<input id="routineOrigin" placeholder="Home / starting area" required maxlength="180"></label><label>Usual destination<input id="routineDestination" placeholder="College / workplace" required maxlength="180"></label><label>Usual vehicle<select id="routineVehicle"><option value="car">Car</option><option value="bike">Motorbike</option><option value="bus">Bus</option><option value="metro">Metro</option></select></label><button class="outline-button full-button" type="submit">Save daily routine <span>â†—</span></button></form><div id="routineStatus" class="inline-status" role="status"></div></article>
+      </section>
+
+      <section class="panel history-panel" id="history"><div class="panel-heading"><div><span class="eyebrow">05 / TRACK PROGRESS</span><h2>Recent calculations</h2><p>Your latest 30 calculations saved to this app's local database.</p></div><button class="text-button" id="clearHistoryBtn">Clear history</button></div><div class="history-table-wrap"><table><thead><tr><th>DATE & TIME</th><th>TRANSPORT</th><th>ELECTRICITY</th><th>FOOD</th><th>TOTAL</th></tr></thead><tbody id="historyBody"><tr><td colspan="5" class="empty-cell">No calculations yet. Your first result will show up here.</td></tr></tbody></table></div></section>
+      <footer><a class="footer-brand" href="#overview">â—’ carbonlens</a><span>Built for more informed everyday choices.</span><span>ESTIMATES, NOT CERTIFIED INVENTORY</span></footer>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js" defer></script>
+  <script src="script.js" defer></script>
+</body></html>
+
